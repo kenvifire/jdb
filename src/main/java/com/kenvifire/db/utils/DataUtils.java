@@ -17,6 +17,7 @@ public class DataUtils {
         return new String(chars);
     }
 
+
     public static Integer readInt(ByteBuffer buff) {
         byte[] bytes = new byte[4];
         buff.get(bytes);
@@ -31,7 +32,6 @@ public class DataUtils {
     public static Long readLong(ByteBuffer buff) {
         byte[] bytes = new byte[8];
         buff.get(bytes);
-        System.out.println(dumpHex(bytes));
         long x = ((long)bytes[0] & 0xff) << 56;
         x = x | ((long)bytes[1] & 0xff) <<48;
         x = x | ((long)bytes[2] & 0xff) <<40;
@@ -40,7 +40,6 @@ public class DataUtils {
         x = x | (bytes[5] & 0xff)<<16;
         x = x | (bytes[6] & 0xff)<<8;
         x = x | (bytes[7] & 0xff);
-        System.out.println(Long.toHexString(x));
         return x;
 
     }
@@ -53,6 +52,10 @@ public class DataUtils {
         return x.shortValue();
     }
 
+    public static void readBytes(ByteBuffer buffer, byte[] dst) {
+        buffer.get(dst);
+    }
+
     public static String dumpHex(byte[] bytes) {
         String result = "";
         for (byte b : bytes) {
@@ -60,4 +63,5 @@ public class DataUtils {
         }
         return result;
     }
+
 }

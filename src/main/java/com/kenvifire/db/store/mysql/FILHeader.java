@@ -1,6 +1,7 @@
 package com.kenvifire.db.store.mysql;
 
 import com.kenvifire.db.utils.DataUtils;
+import lombok.Data;
 
 import java.nio.ByteBuffer;
 
@@ -27,6 +28,71 @@ public class FILHeader {
     private short   type;
     private Long    flushLsn;
     private Integer spaceId;
+
+
+    public Integer getChecksum() {
+        return checksum;
+    }
+
+    public void setChecksum(Integer checksum) {
+        this.checksum = checksum;
+    }
+
+    public Integer getOffSet() {
+        return offSet;
+    }
+
+    public void setOffSet(Integer offSet) {
+        this.offSet = offSet;
+    }
+
+    public Integer getPreviousPage() {
+        return previousPage;
+    }
+
+    public void setPreviousPage(Integer previousPage) {
+        this.previousPage = previousPage;
+    }
+
+    public Integer getNextPage() {
+        return nextPage;
+    }
+
+    public void setNextPage(Integer nextPage) {
+        this.nextPage = nextPage;
+    }
+
+    public Long getLsn4LastModification() {
+        return lsn4LastModification;
+    }
+
+    public void setLsn4LastModification(Long lsn4LastModification) {
+        this.lsn4LastModification = lsn4LastModification;
+    }
+
+    public short getType() {
+        return type;
+    }
+
+    public void setType(short type) {
+        this.type = type;
+    }
+
+    public Long getFlushLsn() {
+        return flushLsn;
+    }
+
+    public void setFlushLsn(Long flushLsn) {
+        this.flushLsn = flushLsn;
+    }
+
+    public Integer getSpaceId() {
+        return spaceId;
+    }
+
+    public void setSpaceId(Integer spaceId) {
+        this.spaceId = spaceId;
+    }
 
     public static FILHeader readHeader(ByteBuffer buffer){
         FILHeader header = new FILHeader();

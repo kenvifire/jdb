@@ -20,7 +20,7 @@ public class IndexHeader {
     private short noOfRecords;
     private long maximumTransactionId;
     private short pageLevel;
-    private int indexId;
+    private long indexId;
 
     public String dump() {
         return String.format("----------\nnoOfDirectorSlots:%s\n" +
@@ -63,9 +63,12 @@ public class IndexHeader {
         pageDirection = DataUtils.readShort(buffer);
         noOfInsertsInPageDirection = DataUtils.readShort(buffer);
         noOfRecords = DataUtils.readShort(buffer);
+        System.out.println("currnet pos-->" + buffer.position());
         maximumTransactionId = DataUtils.readLong(buffer);
+        System.out.println("currnet pos-->" + buffer.position());
         pageLevel = DataUtils.readShort(buffer);
-        indexId = DataUtils.readInt(buffer);
+        indexId = DataUtils.readLong(buffer);
+        System.out.println("currnet pos-->" + buffer.position());
     }
 
     public short getNoOfDirectorySlots() {
@@ -164,11 +167,5 @@ public class IndexHeader {
         this.pageLevel = pageLevel;
     }
 
-    public int getIndexId() {
-        return indexId;
-    }
 
-    public void setIndexId(int indexId) {
-        this.indexId = indexId;
-    }
 }

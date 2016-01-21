@@ -31,8 +31,8 @@ public class IndexSystemRecord {
 
     public void read(ByteBuffer buffer) {
         byte tmp = buffer.get();
-        infoFlags = (byte)((int)tmp & 0x0f);
-        noOfRecordsOwned = (byte)(((int) tmp >> 4) &0x0f );
+        noOfRecordsOwned = (byte)((int)tmp & 0x0f);
+        infoFlags = (byte)(((int) tmp >> 4) &0x0f );
         short tmpShort = DataUtils.readShort(buffer);
         order = (short)((int)tmpShort & 0x1fff);
         recordType = (byte)(((int)tmpShort >> 13) &0x07);

@@ -15,6 +15,18 @@ public class FSEGHeader {
     private int internalInodePageNumber;
     private short internalInodeOffset;
 
+    public String dump() {
+        return String.format("leafPagesInodeSpaceId:%s\n" +
+                "leafPagesInodePageNumber:%s\n" +
+                        "leafPageInodeOffset:%s\n" +
+                        "internalInodeSpaceId:%s\n" +
+                        "internalInodePageNumber:%s\n" +
+                        "internalInodeOffset:%s\n",
+                leafPagesInodeSpaceId,leafPagesInodePageNumber,
+                leafPageInodeOffset,internalInodeSpaceId,
+                internalInodePageNumber,internalInodeOffset);
+    }
+
     public void read(ByteBuffer buffer) {
         leafPagesInodeSpaceId = DataUtils.readInt(buffer);
         leafPagesInodePageNumber = DataUtils.readInt(buffer);

@@ -19,37 +19,16 @@ public class DataUtils {
 
 
     public static Integer readInt(ByteBuffer buff) {
-        byte[] bytes = new byte[4];
-        buff.get(bytes);
-
-        int x = (bytes[0] & 0xff) <<24;
-        x = x | (bytes[1] & 0xff)<<16;
-        x = x | (bytes[2] & 0xff)<<8;
-        x = x | (bytes[3] & 0xff);
-        return x;
+       return buff.getInt();
     }
 
     public static Long readLong(ByteBuffer buff) {
-        byte[] bytes = new byte[8];
-        buff.get(bytes);
-        long x = ((long)bytes[0] & 0xff) << 56;
-        x = x | ((long)bytes[1] & 0xff) <<48;
-        x = x | ((long)bytes[2] & 0xff) <<40;
-        x = x | ((long)bytes[3] & 0xff) <<32;
-        x = x | (bytes[4] & 0xff)<<24;
-        x = x | (bytes[5] & 0xff)<<16;
-        x = x | (bytes[6] & 0xff)<<8;
-        x = x | (bytes[7] & 0xff);
-        return x;
+       return buff.getLong();
 
     }
 
     public static short readShort(ByteBuffer buff) {
-        byte[] bytes = new byte[2];
-        buff.get(bytes);
-        Integer x = (int)bytes[0];
-        x = x | (bytes[1] & 0xff)<<1;
-        return x.shortValue();
+        return buff.getShort();
     }
 
     public static void readBytes(ByteBuffer buffer, byte[] dst) {

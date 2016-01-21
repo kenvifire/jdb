@@ -39,15 +39,16 @@ public class Page {
     private byte[] data;
 
     public static Page read(ByteBuffer buffer) {
-        byte[] data = new byte[16338];
-        DataUtils.readBytes(buffer, data);
-        buffer.mark();
+        int pos = buffer.position();
         buffer.position(24);
-        PageTypeEnum pageType = PageTypeEnum.parse(DataUtils.readShort(buffer));
+        short type = DataUtils.readShort(buffer);
+        System.out.println("type==>" + type);
+        PageTypeEnum pageType = PageTypeEnum.parse(type);
         Page page = new Page();
         page.pageType = pageType;
         if(pageType == PageTypeEnum.INDEX) {
             page = new IndexPage();
+            buffer.position(pos);
             page.pageType  = pageType;
             page.readPageData(buffer);
         }

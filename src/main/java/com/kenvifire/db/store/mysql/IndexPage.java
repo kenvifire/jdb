@@ -81,6 +81,15 @@ public class IndexPage extends Page{
 
     @Override
     public String dump() {
-        return super.dump();
+        return String.format("file header:%s\n" +
+                "index header:%s\n" +
+                "fsg header:%s\n" +
+                "system records[0]:%s\n" +
+                "system records[1]:%s\n" +
+                "",filHeader.dump(),
+                indexHeader.dump(),
+                fsegHeader.dump(),
+                systemRecords[0].dump(),
+                systemRecords[1].dump());
     }
 }

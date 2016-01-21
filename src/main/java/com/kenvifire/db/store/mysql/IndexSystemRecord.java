@@ -2,7 +2,6 @@ package com.kenvifire.db.store.mysql;
 
 import com.kenvifire.db.utils.DataUtils;
 
-import javax.xml.crypto.Data;
 import java.nio.ByteBuffer;
 
 /**
@@ -15,6 +14,20 @@ public class IndexSystemRecord {
     private byte    recordType;//3bits
     private short nextRecordOffset;
     private byte[] str = new byte[8];
+
+    public String dump() {
+        try {
+            return String.format("infoFlags:%s\n" +
+                    "noOfRecordsOwned:%s\n" +
+                    "order:%s\n" +
+                    "recordType:%s\n" +
+                    "nextRecordOffset:%s\n" +
+                    "str:%s\n", infoFlags, noOfRecordsOwned, order, recordType, nextRecordOffset, new String(str, "UTF-8"));
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public void read(ByteBuffer buffer) {
         byte tmp = buffer.get();

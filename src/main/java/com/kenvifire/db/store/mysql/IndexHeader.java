@@ -22,6 +22,35 @@ public class IndexHeader {
     private short pageLevel;
     private int indexId;
 
+    public String dump() {
+        return String.format("----------\nnoOfDirectorSlots:%s\n" +
+                            "heapTopPos:%s\n" +
+                            "noOfHeapRecords:%s\n" +
+                            "formatFloag:%s\n" +
+                            "firstGarbageRecordOffset:%s\n" +
+                            "garbageSpace:%s\n" +
+                            "lastInsertPost:%s\n" +
+                            "pageDirection:%s\n" +
+                            "noOfInsertsInPageDirection:%s\n" +
+                            "noOfRecords:%s\n" +
+                            "maximumTransactionId:%s\n" +
+                            "pageLevel:%s\n" +
+                            "indexId:%s\n",
+                    noOfDirectorySlots,
+                    heapTopPos,
+                    noOfHeapRecords,
+                    formatFlag,
+                    firstGarbageRecordOffset,
+                    garbageSpace,
+                    lastInsertPos,
+                    pageDirection,
+                    noOfInsertsInPageDirection,
+                    noOfRecords,
+                    maximumTransactionId,
+                    pageLevel,
+                    indexId);
+    }
+
     public void read(ByteBuffer buffer) {
         noOfDirectorySlots = DataUtils.readShort(buffer);
         heapTopPos = DataUtils.readShort(buffer);

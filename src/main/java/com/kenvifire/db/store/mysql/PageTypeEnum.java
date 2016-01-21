@@ -4,10 +4,10 @@ package com.kenvifire.db.store.mysql;
  * Created by kenvi on 16/1/19.
  */
 public enum PageTypeEnum {
-    FSR_HDR((short)16),
-    IBUF_BITMAP((short)10),
-    INODE((short)6),
-    INDEX((short)383),
+    FSR_HDR((short)8),
+    IBUF_BITMAP((short)5),
+    INODE((short)3),
+    INDEX((short)17855),
     FREE((short)0);
 
     private short value;
